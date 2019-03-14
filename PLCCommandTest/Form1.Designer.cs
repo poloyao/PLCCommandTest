@@ -319,9 +319,9 @@
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Location = new System.Drawing.Point(107, 101);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(48, 16);
+            this.checkBox2.Size = new System.Drawing.Size(66, 16);
             this.checkBox2.TabIndex = 33;
-            this.checkBox2.Text = "回车";
+            this.checkBox2.Text = "加*回车";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // label8

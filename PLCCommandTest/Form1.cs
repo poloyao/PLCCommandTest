@@ -89,10 +89,10 @@ namespace PLCCommandTest
             {
                 command += XOR(command);
             }
-            command += "*";
+
             if (checkBox2.Checked)
             {
-                command += System.Environment.NewLine;
+                command += "*" + System.Environment.NewLine;
             }
 
             return command;
@@ -121,10 +121,9 @@ namespace PLCCommandTest
             {
                 command += XOR(command);
             }
-            command += "*";
             if (checkBox2.Checked)
             {
-                command += System.Environment.NewLine;
+                command += "*" + System.Environment.NewLine;
             }
 
             return command;
@@ -182,10 +181,9 @@ namespace PLCCommandTest
             {
                 command += XOR(command);
             }
-            command += "*";
             if (checkBox2.Checked)
             {
-                command += System.Environment.NewLine;
+                command += "*" + System.Environment.NewLine;
             }
 
             return command;
@@ -200,15 +198,17 @@ namespace PLCCommandTest
 
             address = address.Remove(0, 1).PadLeft(4, '0');
             //string len = BitConverter.ToString(tenTo16(int.Parse(lenght))).Replace("-", "");
-            string command = $"@{plc}WR{address}{value}";
+
+            string data = BitConverter.ToString(tenTo16(int.Parse(value))).Replace("-", "");
+
+            string command = $"@{plc}WR{address}{data}";
             if (checkBox1.Checked)
             {
                 command += XOR(command);
             }
-            command += "*";
             if (checkBox2.Checked)
             {
-                command += System.Environment.NewLine;
+                command += "*" + System.Environment.NewLine;
             }
             return command;
         }
