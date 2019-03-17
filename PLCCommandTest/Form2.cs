@@ -109,6 +109,11 @@ namespace PLCCommandTest
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!EntLink)
+            {
+                MessageBox.Show("还未与PLC建立联接！");
+                return;
+            }
             var value = (comboBox1.SelectedItem as MyCommand).Address;
             value = value.Trim().ToLower();
             value = value.Remove(0, 1);
@@ -124,11 +129,11 @@ namespace PLCCommandTest
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //if (!EntLink)
-            //{
-            //    MessageBox.Show("还未与PLC建立联接！");
-            //    return;
-            //}
+            if (!EntLink)
+            {
+                MessageBox.Show("还未与PLC建立联接！");
+                return;
+            }
             var value = (comboBox1.SelectedItem as MyCommand).Address;
             value = value.Trim().ToLower();
             value = value.Remove(0, 1);
@@ -148,6 +153,11 @@ namespace PLCCommandTest
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (!EntLink)
+            {
+                MessageBox.Show("还未与PLC建立联接！");
+                return;
+            }
             var value = (comboBox1.SelectedItem as MyCommand).Address;
             value = value.Trim().ToLower();
             value = value.Remove(0, 1);
@@ -157,11 +167,6 @@ namespace PLCCommandTest
             short re = 0;
             string[] temp = null;
             object[] WD = null;
-            if (!EntLink)
-            {
-                MessageBox.Show("还未与PLC建立联接！");
-                return;
-            }
             WD = new object[1];
             WD[i] = textBox6.Text;
             HostLink.PlcCom.DataType typ = HostLink.PlcCom.DataType.INT16;
