@@ -22,9 +22,26 @@ namespace PLCCommandTest
             Wisdom.Utils.Driver.HostLink.HostLinkDriver hh = new Wisdom.Utils.Driver.HostLink.HostLinkDriver();
             Wisdom.Utils.Driver.HostLink.HostLinkProtocol hp = new Wisdom.Utils.Driver.HostLink.HostLinkProtocol();
             Wisdom.Utils.Driver.Arg.ComArg com = new ComArg("com10", 9600, System.IO.Ports.Parity.Even, 7, System.IO.Ports.StopBits.Two);
-            hh.Connect(com);
+            //hh.Connect(com);
             //var data = hh.WriteData(Wisdom.Utils.Driver.HostLink.HostLinkDriver.PlcConstant.AreaCio, 10, 0, "1");
 
+            foreach (var v in typeof(Parity).GetFields())
+            {
+                if (v.FieldType.IsEnum == true)
+                {
+                    this.comboBox4.Items.Add(v.Name);
+                }
+            }
+            comboBox4.SelectedIndex = 2;
+
+            foreach (var v in typeof(StopBits).GetFields())
+            {
+                if (v.FieldType.IsEnum == true)
+                {
+                    this.comboBox5.Items.Add(v.Name);
+                }
+            }
+            comboBox5.SelectedIndex = 2;
             comboBox3.DataSource = SerialPort.GetPortNames();
 
             List<MyCommand> data = new List<MyCommand>();
@@ -104,12 +121,13 @@ namespace PLCCommandTest
                 MessageBox.Show("还未与PLC建立联接！");
                 return;
             }
-            var value = (comboBox1.SelectedItem as MyCommand).Address;
+            var value = (comboBox2.SelectedItem as MyCommand).Address;
             value = value.Trim().ToLower();
             value = value.Remove(0, 1);
             var address = int.Parse(value.Split('.')[0]);
-
-            var response = hd.WriteData(HostLinkDriver.PlcConstant.AreaDm, address, 1, textBox6.Text);
+            var asd = int.Parse(textBox6.Text).ToString("X").Replace("-", "");
+            var response = hd.WriteData(HostLinkDriver.PlcConstant.AreaDm, address, 0, textBox6.Text);
+            //var response = hd.ReadData(HostLinkDriver.PlcConstant.AreaDm, address, 0, "1");
         }
     }
 }
