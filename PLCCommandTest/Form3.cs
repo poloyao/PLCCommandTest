@@ -125,8 +125,8 @@ namespace PLCCommandTest
             value = value.Trim().ToLower();
             value = value.Remove(0, 1);
             var address = int.Parse(value.Split('.')[0]);
-            var asd = int.Parse(textBox6.Text).ToString("X").Replace("-", "");
-            var response = hd.WriteData(HostLinkDriver.PlcConstant.AreaDm, address, 0, textBox6.Text);
+            var data = int.Parse(textBox6.Text).ToString("X").Replace("-", "");
+            var response = hd.WriteData(HostLinkDriver.PlcConstant.AreaDm, address, 0, data);
             //var response = hd.ReadData(HostLinkDriver.PlcConstant.AreaDm, address, 0, "1");
         }
     }
