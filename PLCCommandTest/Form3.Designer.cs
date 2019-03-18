@@ -125,6 +125,7 @@
             this.button5.TabIndex = 129;
             this.button5.Text = "写";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBox6
             // 
@@ -233,6 +234,7 @@
             this.button1.TabIndex = 117;
             this.button1.Text = "读";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -333,6 +335,7 @@
             this.button2.TabIndex = 106;
             this.button2.Text = "打开串口";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox3
             // 
