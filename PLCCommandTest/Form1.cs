@@ -275,5 +275,55 @@ namespace PLCCommandTest
                 }
             }
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            textBox8.Text = HexStringToASCII(textBox2.Text);
+        }
+
+        /// <summary>
+        /// 将一条十六进制字符串转换为ASCII
+        /// </summary>
+        /// <param name="hexstring">一条十六进制字符串</param>
+        /// <returns>返回一条ASCII码</returns>
+        public static string HexStringToASCII(string hexstring)
+        {
+            byte[] bt = HexStringToBinary(hexstring);
+            string lin = "";
+            for (int i = 0; i < bt.Length; i++)
+            {
+                lin = lin + bt[i] + " ";
+            }
+
+            string[] ss = lin.Trim().Split(new char[] { ' ' });
+            char[] c = new char[ss.Length];
+            int a;
+            for (int i = 0; i < c.Length; i++)
+            {
+                a = Convert.ToInt32(ss[i]);
+                c[i] = Convert.ToChar(a);
+            }
+
+            string b = new string(c);
+            return b;
+        }
+
+        /**/
+
+        /// <summary>
+        /// 16进制字符串转换为二进制数组
+        /// </summary>
+        /// <param name="hexstring">用空格切割字符串</param>
+        /// <returns>返回一个二进制字符串</returns>
+        public static byte[] HexStringToBinary(string hexstring)
+        {
+            string[] tmpary = hexstring.Trim().Split(' ');
+            byte[] buff = new byte[tmpary.Length];
+            for (int i = 0; i < buff.Length; i++)
+            {
+                buff[i] = Convert.ToByte(tmpary[i], 16);
+            }
+            return buff;
+        }
     }
 }
