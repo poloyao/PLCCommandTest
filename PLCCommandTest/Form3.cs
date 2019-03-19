@@ -111,7 +111,9 @@ namespace PLCCommandTest
             var bit = int.Parse(value.Split('.')[1]);
 
             var data = radioButton2.Checked ? "1" : "0";
-            var response = hd.WriteData(HostLinkDriver.PlcConstant.AreaCio, address, bit, data);
+            var data1 = int.Parse(data).ToString("X").Replace("-", "").PadLeft(2, '0');
+
+            var response = hd.WriteData(HostLinkDriver.PlcConstant.AreaCio, address, bit, data1);
         }
 
         private void button5_Click(object sender, EventArgs e)

@@ -325,5 +325,12 @@ namespace PLCCommandTest
             }
             return buff;
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            //@00FA000000000010282006E00000100640E*
+            // port.Write("@00FA000000000010282006E00000100640E*" + System.Environment.NewLine);
+            port.Write(textBox10.Text + System.Environment.NewLine);
+        }
     }
 }

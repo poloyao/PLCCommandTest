@@ -403,7 +403,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "20190318版";
             this.ResumeLayout(false);
             this.PerformLayout();
 
